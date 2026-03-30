@@ -1,0 +1,36 @@
+{% extends 'flashcards/base.html' %}
+
+{% block title %}Главная — LanguageFlash{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 mx-auto text-center">
+        <h1 class="mb-4">Добро пожаловать в LanguageFlash!</h1>
+        <p class="lead mb-4">Тренажёр для запоминания иностранных слов с помощью карточек и квизов</p>
+
+        <div class="row mt-5">
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Карточек в базе</h5>
+                        <p class="display-4">{{ cards_count }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Тем</h5>
+                        <p class="display-4">{{ topics_count }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <a href="{% url 'flashcards:cards_list' %}" class="btn btn-primary btn-lg me-2">Просмотреть карточки</a>
+            <a href="{% url 'flashcards:quiz' %}" class="btn btn-success btn-lg">Начать квиз</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

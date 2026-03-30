@@ -1,0 +1,29 @@
+{% extends 'flashcards/base.html' %}
+
+{% block title %}Список карточек — LanguageFlash{% endblock %}
+
+{% block content %}
+<h2>Все карточки</h2>
+<a href="{% url 'flashcards:add_card' %}" class="btn btn-primary mb-3">Добавить новую карточку</a>
+
+{% if cards %}
+    <div class="row">
+        {% for card in cards %}
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    {% if card.image %}
+                        <img src="{{ card.image.url }}" class="card-img-top" alt="{{ card.word }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ card.word }}</h5>
+                        <p class="card-text text-muted">{{ card.translation }}</p>
+                        <small class="text-secondary">Тема: {{ card.topic.name }}</small>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p class="text-muted">Карточек пока нет. <a href="{% url 'flashcards:add_card' %}">Добавьте первую!</a></p>
+{% endif %}
+{% endblock %}

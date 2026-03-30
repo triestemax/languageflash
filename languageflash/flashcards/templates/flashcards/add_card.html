@@ -1,0 +1,46 @@
+{% extends 'flashcards/base.html' %}
+
+{% block title %}{% if form.instance.pk %}Редактирование карточки{% else %}Добавление карточки{% endif %} — LanguageFlash{% endblock %}
+
+{% block content %}
+<h2>{% if form.instance.pk %}Редактировать карточку{% else %}Добавить новую карточку{% endif %}</h2>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="mb-3">
+        <label for="{{ form.word.id_for_label }}" class="form-label">Слово</label>
+        {{ form.word }}
+        {% if form.word.errors %}
+            <div class="text-danger">{{ form.word.errors }}</div>
+        {% endif %}
+    </div>
+
+    <div class="mb-3">
+        <label for="{{ form.translation.id_for_label }}" class="form-label">Перевод</label>
+        {{ form.translation }}
+        {% if form.translation.errors %}
+            <div class="text-danger">{{ form.translation.errors }}</div>
+        {% endif %}
+    </div>
+
+    <div class="mb-3">
+        <label for="{{ form.topic.id_for_label }}" class="form-label">Тема</label>
+        {{ form.topic }}
+        {% if form.topic.errors %}
+            <div class="text-danger">{{ form.topic.errors }}</div>
+        {% endif %}
+    </div>
+
+    <div class="mb-3">
+        <label for="{{ form.image.id_for_label }}" class="form-label">Изображение (опционально)</label>
+        {{ form.image }}
+        {% if form.image.errors %}
+            <div class="text-danger">{{ form.image.errors }}</div>
+        {% endif %}
+    </div>
+
+    <button type="submit" class="btn btn-success">Сохранить</button>
+    <a href="{% url 'flashcards:cards_list' %}" class="btn btn-secondary">Отмена</a>
+</form>
+{% endblock %}
