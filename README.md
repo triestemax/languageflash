@@ -15,6 +15,12 @@ source venv/Scripts/activate
 python -m pip install --upgrade pip
 ```
 
+```bash
+В корневом каталоге создайте файл .env
+SECRET_KEY=django-insecure-5mt(gh29+ab8@3t5x+9iy5d6oxk+2a$ql%x)b1fi49-sz=vni
+ALLOWED_HOSTS=127.0.0.1
+```
+
 - Затем нужно установить все зависимости из файла requirements.txt
 
 ```bash
