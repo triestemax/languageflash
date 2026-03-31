@@ -37,6 +37,12 @@ pip install -r requirements.txt
 python manage.py migrate
 ```
 
+- Создаем суперпоьзователя для работы с админ зоной:
+
+```bash
+python manage.py createsuperuser
+```
+
 - Запускаем проект:
 
 ```bash
